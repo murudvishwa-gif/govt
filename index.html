@@ -828,29 +828,144 @@ section { padding: 7rem 6rem; }
 .ann-excerpt { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
 
 /* ======== LEADERSHIP ======== */
-#leadership { background: var(--white); }
+#leadership {
+  background: var(--white);
+  padding: 4rem 2rem;
+}
 
-.leadership-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+/* HEADER */
+.leadership-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
 
-.leadership-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+/* GRID - DESKTOP */
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
 
-.leader-card { position: relative; cursor: pointer; overflow: hidden; border-radius: 2px; }
-.leader-portrait { width: 100%; aspect-ratio: 3/4; background: var(--navy); position: relative; overflow: hidden; }
-.leader-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 600; color: rgba(255,255,255,0.3); }
+/* CARD */
+.leader-card {
+  position: relative;
+  cursor: pointer;
+}
 
-.leader-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 0; background: linear-gradient(to top, rgba(200,150,62,0.9), transparent); transition: height 0.5s cubic-bezier(0.4,0,0.2,1); display: flex; align-items: flex-end; padding: 1.2rem; }
-.leader-card:hover .leader-overlay { height: 60%; }
-.leader-quote { font-size: 0.82rem; color: var(--navy); font-style: italic; line-height: 1.5; opacity: 0; transform: translateY(8px); transition: all 0.4s 0.1s; }
-.leader-card:hover .leader-quote { opacity: 1; transform: translateY(0); }
+/* PORTRAIT BOX */
+.leader-portrait {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #0a1628;
+}
 
-.leader-info { padding: 1.2rem 0 0; }
-.leader-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.2rem; }
-.leader-title { font-size: 0.75rem; color: var(--gold); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+/* IMAGE FIT */
+.leader-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
 
-.leader-portrait-1 { background: linear-gradient(135deg, #0a1628 0%, #1e3a5f 100%); }
-.leader-portrait-2 { background: linear-gradient(135deg, #1a2a1a 0%, #2a4a2a 100%); }
-.leader-portrait-3 { background: linear-gradient(135deg, #2a1a2a 0%, #4a2a4a 100%); }
-.leader-portrait-4 { background: linear-gradient(135deg, #1a1a2a 0%, #2a3a5a 100%); }
+/* HOVER ZOOM */
+.leader-card:hover .leader-img {
+  transform: scale(1.05);
+}
+
+/* OVERLAY */
+.leader-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: linear-gradient(to top, rgba(200,150,62,0.9), transparent);
+  transition: height 0.4s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+}
+
+.leader-card:hover .leader-overlay {
+  height: 60%;
+}
+
+.leader-quote {
+  font-size: 0.8rem;
+  color: var(--navy);
+  font-style: italic;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.leader-card:hover .leader-quote {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* INFO */
+.leader-info {
+  padding-top: 1rem;
+}
+
+.leader-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.leader-title {
+  font-size: 0.75rem;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =========================
+   📱 TABLET VIEW
+========================= */
+@media (max-width: 1024px) {
+  .leadership-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   📱 MOBILE VIEW
+========================= */
+@media (max-width: 600px) {
+  #leadership {
+    padding: 3rem 1rem;
+  }
+
+  .leadership-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .leader-portrait {
+    aspect-ratio: 3 / 4;
+  }
+
+  .leader-name {
+    font-size: 1rem;
+  }
+}
+
 
 /* ======== PROJECTS ======== */
 #projects { background: var(--cream); padding: 7rem 6rem; }
@@ -1577,7 +1692,7 @@ footer {
  <a href="404page.html" class="nav-logo">
     <div class="nav-emblem"></div>
 
-    <img src="assets/logo-dark.png" alt="Government Logo" class="custom-logo">
+    <img src="assets/logo-dark.webp" alt="Government Logo" class="custom-logo">
 
     <div class="nav-title">
         Republic of Valdoria
@@ -1667,7 +1782,7 @@ footer {
           </div>
         </div>
         <div style="display:flex;justify-content:flex-end;margin-bottom:0.5rem;">
-          <a href="#" style="font-size:0.78rem;color:var(--gold);text-decoration:none;font-weight:500;">Forgot password?</a>
+          <a href="404page.html" style="font-size:0.78rem;color:var(--gold);text-decoration:none;font-weight:500;">Forgot password?</a>
         </div>
         <button class="modal-submit" type="button" onclick="handleLogin(this)"><span>Sign In to Portal →</span></button>
         <div class="modal-divider"><span>or continue with</span></div>
@@ -1804,19 +1919,19 @@ footer {
 <section id="services">
   <div class="services-layout">
     <div class="services-intro reveal">
-      <span class="section-tag">Public Services</span>
-      <h2 class="section-heading">Essential Services <em>for Every Citizen</em></h2>
-      <p class="section-sub">From healthcare and education to taxation and housing — access every government service with ease, speed and transparency.</p>
+      <span class="404page.html">Public Services</span>
+      <h2 class="404page.html">Essential Services <em>for Every Citizen</em></h2>
+      <p class="404page.html">From healthcare and education to taxation and housing — access every government service with ease, speed and transparency.</p>
       <br>
-      <a href="#" class="btn-primary" style="margin-top:2rem;">View All Services →</a>
+      <a href="404page.html" class="btn-primary" style="margin-top:2rem;">View All Services →</a>
     </div>
     <div class="services-grid">
-      <a href="#404page.html" class="service-card reveal"><div class="service-icon">🏥</div><div class="service-name">Healthcare</div><p class="service-desc">Register for universal healthcare, find clinics, and manage medical records online.</p><span class="service-arrow">Access →</span></a>
-      <a href="#404page.html" class="service-card reveal reveal-delay-1"><div class="service-icon">🎓</div><div class="service-name">Education</div><p class="service-desc">Enrol in public schools, apply for scholarships, and access lifelong learning programmes.</p><span class="service-arrow">Access →</span></a>
-      <a href="#404page.html" class="service-card reveal reveal-delay-2"><div class="service-icon">🏠</div><div class="service-name">Housing</div><p class="service-desc">Apply for subsidised housing, affordable loans, and urban development assistance.</p><span class="service-arrow">Access →</span></a>
-      <a href="#404page.html" class="service-card reveal reveal-delay-3"><div class="service-icon">💼</div><div class="service-name">Employment</div><p class="service-desc">Find jobs, register businesses, access unemployment benefits and vocational training.</p><span class="service-arrow">Access →</span></a>
-      <a href="#404page.html" class="service-card reveal"><div class="service-icon">🛂</div><div class="service-name">Passport & ID</div><p class="service-desc">Apply, renew, and track national identity documents and travel passports.</p><span class="service-arrow">Access →</span></a>
-      <a href="#404page.html" class="service-card reveal reveal-delay-1"><div class="service-icon">⚖️</div><div class="service-name">Legal Aid</div><p class="service-desc">Free legal consultation services, court filing assistance, and rights information.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal"><div class="service-icon">🏥</div><div class="service-name">Healthcare</div><p class="service-desc">Register for universal healthcare, find clinics, and manage medical records online.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal reveal-delay-1"><div class="service-icon">🎓</div><div class="service-name">Education</div><p class="service-desc">Enrol in public schools, apply for scholarships, and access lifelong learning programmes.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal reveal-delay-2"><div class="service-icon">🏠</div><div class="service-name">Housing</div><p class="service-desc">Apply for subsidised housing, affordable loans, and urban development assistance.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal reveal-delay-3"><div class="service-icon">💼</div><div class="service-name">Employment</div><p class="service-desc">Find jobs, register businesses, access unemployment benefits and vocational training.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal"><div class="service-icon">🛂</div><div class="service-name">Passport & ID</div><p class="service-desc">Apply, renew, and track national identity documents and travel passports.</p><span class="service-arrow">Access →</span></a>
+      <a href="404page.html" class="service-card reveal reveal-delay-1"><div class="service-icon">⚖️</div><div class="service-name">Legal Aid</div><p class="service-desc">Free legal consultation services, court filing assistance, and rights information.</p><span class="service-arrow">Access →</span></a>
     </div>
   </div>
 </section>
@@ -1842,14 +1957,73 @@ footer {
 <!-- LEADERSHIP -->
 <section id="leadership">
   <div class="leadership-header reveal">
-    <div><span class="section-tag">Government Leadership</span><h2 class="section-heading">Meet the <em>Cabinet</em></h2></div>
-    <a href="404page.html" class="btn-outline" style="color:var(--navy);border-color:var(--stone);">Full Cabinet →</a>
+    <div>
+      <span class="section-tag">Government Leadership</span>
+      <h2 class="section-heading">Meet the <em>Cabinet</em></h2>
+    </div>
+    <a href="404page.html" class="btn-outline" style="color:var(--navy);border-color:var(--stone);">
+      Full Cabinet →
+    </a>
   </div>
+
   <div class="leadership-grid">
-    <div class="leader-card reveal"><div class="leader-portrait leader-portrait-1"><span class="leader-initials">AK</span><div class="leader-overlay"><p class="leader-quote">"A nation's strength lies in its people's trust."</p></div></div><div class="leader-info"><div class="leader-name">Amara Kessler</div><div class="leader-title">President of the Republic</div></div></div>
-    <div class="leader-card reveal reveal-delay-1"><div class="leader-portrait leader-portrait-2"><span class="leader-initials">TR</span><div class="leader-overlay"><p class="leader-quote">"Inclusive growth for every district, every family."</p></div></div><div class="leader-info"><div class="leader-name">Thomas Reinholt</div><div class="leader-title">Prime Minister</div></div></div>
-    <div class="leader-card reveal reveal-delay-2"><div class="leader-portrait leader-portrait-3"><span class="leader-initials">SN</span><div class="leader-overlay"><p class="leader-quote">"Transparent budgets build lasting public trust."</p></div></div><div class="leader-info"><div class="leader-name">Sophia Nakamura</div><div class="leader-title">Minister of Finance</div></div></div>
-    <div class="leader-card reveal reveal-delay-3"><div class="leader-portrait leader-portrait-4"><span class="leader-initials">OB</span><div class="leader-overlay"><p class="leader-quote">"Infrastructure is the foundation of a nation's future."</p></div></div><div class="leader-info"><div class="leader-name">Omar Balogun</div><div class="leader-title">Minister of Infrastructure</div></div></div>
+
+    <!-- Leader 1 -->
+    <div class="leader-card reveal">
+      <div class="leader-portrait leader-portrait-1">
+        <img src="assets/Claudia-Sheinbaum.webp" alt="Amara Kessler" class="leader-img">
+        <div class="leader-overlay">
+          <p class="leader-quote">"A nation's strength lies in its people's trust."</p>
+        </div>
+      </div>
+      <div class="leader-info">
+        <div class="leader-name">Amara Kessler</div>
+        <div class="leader-title">President of the Republic</div>
+      </div>
+    </div>
+
+    <!-- Leader 2 -->
+    <div class="leader-card reveal reveal-delay-1">
+      <div class="leader-portrait leader-portrait-2">
+        <img src="assets/PTI09_10_2022_000168A.webp" alt="Thomas Reinholt" class="leader-img">
+        <div class="leader-overlay">
+          <p class="leader-quote">"Inclusive growth for every district, every family."</p>
+        </div>
+      </div>
+      <div class="leader-info">
+        <div class="leader-name">Thomas Reinholt</div>
+        <div class="leader-title">Prime Minister</div>
+      </div>
+    </div>
+
+    <!-- Leader 3 -->
+    <div class="leader-card reveal reveal-delay-2">
+      <div class="leader-portrait leader-portrait-3">
+        <img src="assets/russia.webp" alt="Sophia Nakamura" class="leader-img">
+        <div class="leader-overlay">
+          <p class="leader-quote">"Transparent budgets build lasting public trust."</p>
+        </div>
+      </div>
+      <div class="leader-info">
+        <div class="leader-name">Sophia Nakamura</div>
+        <div class="leader-title">Minister of Finance</div>
+      </div>
+    </div>
+
+    <!-- Leader 4 -->
+    <div class="leader-card reveal reveal-delay-3">
+      <div class="leader-portrait leader-portrait-4">
+        <img src="assets/rcv.YNA.20250625.PYH2025062511160001300_P1.webp" alt="Omar Balogun" class="leader-img">
+        <div class="leader-overlay">
+          <p class="leader-quote">"Infrastructure is the foundation of a nation's future."</p>
+        </div>
+      </div>
+      <div class="leader-info">
+        <div class="leader-name">Omar Balogun</div>
+        <div class="leader-title">Minister of Infrastructure</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1928,13 +2102,47 @@ footer {
 <section id="media">
   <div class="media-header reveal">
     <div><span class="section-tag" style="color:var(--gold-light);">Press & Media</span><h2 class="section-heading" style="color:var(--white);">Government <em>Media Room</em></h2></div>
-    <a href="#" class="btn-outline">All Releases →</a>
+    <a href="404page.html" class="btn-outline">All Releases →</a>
   </div>
   <div class="media-grid reveal">
-    <div class="media-card featured"><div class="media-thumb media-t1"><span style="font-size:3rem;opacity:0.4;">🎙️</span><div class="media-play">▶</div></div><div class="media-body"><div class="media-type">Press Conference</div><div class="media-title">President Kessler Delivers Annual State of the Nation Address — Full Recording</div><div class="media-date">November 10, 2025</div></div></div>
-    <div class="media-card"><div class="media-thumb media-t2"><span style="font-size:2rem;opacity:0.4;">📄</span><div class="media-play">▶</div></div><div class="media-body"><div class="media-type">Policy Brief</div><div class="media-title">Digital Economy White Paper 2025 — Full Report</div><div class="media-date">November 5, 2025</div></div></div>
-    <div class="media-card"><div class="media-thumb media-t3"><span style="font-size:2rem;opacity:0.4;">📊</span><div class="media-play">▶</div></div><div class="media-body"><div class="media-type">Data Release</div><div class="media-title">Q3 2025 Economic Indicators — National Statistics Office</div><div class="media-date">October 28, 2025</div></div></div>
+
+  <div class="media-card featured">
+    <div class="media-thumb media-t1">
+      <img src="assets/Claudia-Sheinbaum.webp" alt="Press Conference">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-body">
+      <div class="media-type">Press Conference</div>
+      <div class="media-title">President Kessler Delivers Annual State of the Nation Address — Full Recording</div>
+      <div class="media-date">November 10, 2025</div>
+    </div>
   </div>
+
+  <div class="media-card">
+    <div class="media-thumb media-t2">
+      <img src="assets/russia.webp" alt="Policy Brief">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-body">
+      <div class="media-type">Policy Brief</div>
+      <div class="media-title">Digital Economy White Paper 2025 — Full Report</div>
+      <div class="media-date">November 5, 2025</div>
+    </div>
+  </div>
+
+  <div class="media-card">
+    <div class="media-thumb media-t3">
+      <img src="assets/PTI09_10_2022_000168A.webp" alt="Data Release">
+      <div class="media-play">▶</div>
+    </div>
+    <div class="media-body">
+      <div class="media-type">Data Release</div>
+      <div class="media-title">Q3 2025 Economic Indicators — National Statistics Office</div>
+      <div class="media-date">October 28, 2025</div>
+    </div>
+  </div>
+
+</div>
 </section>
 
 <!-- CONTACT -->
@@ -1990,7 +2198,7 @@ footer {
       </div>
       <div class="footer-stackly">
     <span class="footer-stackly-label">Powered by</span>
-    <img src="assets/logo-dark.png" alt="Company Logo">
+    <img src="assets/company-logo.webp" alt="Company Logo">
 </div>
       <p class="footer-desc">The official digital portal of the Government of Valdoria. Committed to transparent governance, equal access and citizen-first services since 1952.</p>
       <div class="footer-socials">
