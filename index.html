@@ -968,52 +968,284 @@ section { padding: 7rem 6rem; }
 
 
 /* ======== PROJECTS ======== */
-#projects { background: var(--cream); padding: 7rem 6rem; }
-
-.projects-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
-.projects-scroll-container { overflow: hidden; position: relative; }
-.projects-track { display: flex; gap: 2rem; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-
-.project-card {
-  flex: 0 0 calc(33.333% - 14px);
-  background: var(--white);
-  border: 1px solid var(--stone);
-  border-radius: 2px;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.project-card:hover { box-shadow: 0 16px 48px rgba(10,22,40,0.12); transform: translateY(-6px); }
-
-.project-visual { height: 200px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.project-v1 { background: linear-gradient(135deg, #0a1628 0%, #1a5c3a 100%); }
-.project-v2 { background: linear-gradient(135deg, #1a3a5a 0%, #0a1628 100%); }
-.project-v3 { background: linear-gradient(135deg, #2a1a0a 0%, #5a3a1a 100%); }
-.project-v4 { background: linear-gradient(135deg, #1a1a3a 0%, #3a1a5a 100%); }
-
-.project-visual-icon { font-size: 3.5rem; opacity: 0.3; position: absolute; }
-
-.project-progress-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 4px; background: rgba(255,255,255,0.1); }
-.project-progress-fill { height: 100%; background: var(--gold); border-radius: 0 2px 2px 0; transition: width 1.5s cubic-bezier(0.4,0,0.2,1); width: 0; }
-
-.project-body { padding: 1.8rem; }
-.project-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
-.project-category { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
-.project-status { font-size: 0.7rem; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
-.status-ongoing { background: rgba(26,92,58,0.12); color: var(--green); }
-.status-planned { background: rgba(200,150,62,0.12); color: var(--gold); }
-.status-complete { background: rgba(10,22,40,0.08); color: var(--navy); }
-.project-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--navy); margin-bottom: 0.6rem; line-height: 1.3; }
-.project-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.2rem; }
-.project-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--stone); }
-.project-budget { font-size: 0.8rem; color: var(--text-muted); }
-.project-budget strong { color: var(--navy); font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
-.project-pct { font-size: 0.78rem; font-weight: 600; color: var(--gold); }
-
-.projects-nav { display: flex; gap: 0.75rem; margin-top: 2.5rem; justify-content: center; }
-.proj-btn { width: 44px; height: 44px; border: 1px solid var(--stone); background: var(--white); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; border-radius: 50%; transition: all 0.3s; color: var(--navy); }
-.proj-btn:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
-
+/* ======== PROJECTS ======== */
+    #projects {
+      background: var(--cream);
+      padding: 7rem 6rem;
+    }
+ 
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+ 
+    .projects-scroll-container {
+      overflow: hidden;
+      position: relative;
+      margin: -2rem;
+      padding: 2rem;
+    }
+ 
+    .projects-track {
+      display: flex;
+      gap: 2rem;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+ 
+    /* ── CARD ── */
+    .project-card {
+      flex: 0 0 calc(33.333% - 14px);
+      background: var(--white);
+      border: 1px solid var(--stone);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease, transform 0.4s ease;
+    }
+ 
+    .project-card:hover {
+      box-shadow: 0 16px 48px rgba(15, 50, 103, 0.15);
+      transform: translateY(-6px);
+    }
+ 
+    /* ── VISUAL — single block, position:relative kept ── */
+    .project-visual {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+ 
+    .project-v1 {
+      background: linear-gradient(135deg, #0a1628 0%, #1a5c3a 100%);
+    }
+ 
+    .project-v2 {
+      background: linear-gradient(135deg, #1a3a5a 0%, #0a1628 100%);
+    }
+ 
+    .project-v3 {
+      background: linear-gradient(135deg, #2a1a0a 0%, #5a3a1a 100%);
+    }
+ 
+    .project-v4 {
+      background: linear-gradient(135deg, #1a1a3a 0%, #3a1a5a 100%);
+    }
+ 
+    .project-visual-icon {
+      font-size: 3.5rem;
+      opacity: 0.25;
+      position: absolute;
+      color: #fff;
+      z-index: 0;
+      pointer-events: none;
+    }
+ 
+    /* ── IMAGE ZOOM ── */
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+ 
+    .project-card:hover .project-visual img {
+      transform: scale(1.08);
+    }
+ 
+    /* ── DARK OVERLAY — no transform, pointer-events none ── */
+    .project-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0);
+      transition: background 0.4s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+ 
+    .project-card:hover .project-visual::after {
+      background: rgba(0, 0, 0, 0.12);
+    }
+ 
+    /* ── PROGRESS BAR ── */
+    .project-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 2;
+    }
+ 
+    .project-progress-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 0 2px 2px 0;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+ 
+    /* ── HOVER TAG — z-index above overlay ── */
+    .project-hover-tag {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 3;
+    }
+ 
+    .project-card:hover .project-hover-tag {
+      opacity: 1;
+      transform: translateY(0);
+    }
+ 
+    /* ── CARD BODY ── */
+    .project-body {
+      padding: 1.8rem;
+    }
+ 
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+ 
+    .project-category {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+    }
+ 
+    .project-status {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 100px;
+      font-weight: 600;
+    }
+ 
+    .status-ongoing {
+      background: rgba(26, 92, 58, 0.12);
+      color: var(--green);
+    }
+ 
+    .status-planned {
+      background: rgba(200, 150, 62, 0.12);
+      color: var(--gold);
+    }
+ 
+    .status-complete {
+      background: rgba(10, 22, 40, 0.08);
+      color: var(--navy);
+    }
+ 
+    .project-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+ 
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+    }
+ 
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--stone);
+    }
+ 
+    .project-budget {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+ 
+    .project-budget strong {
+      color: var(--navy);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+    }
+ 
+    .project-pct {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+ 
+    /* ── NAV ── */
+    .projects-nav {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 2.5rem;
+      justify-content: center;
+    }
+ 
+    .proj-btn {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--stone);
+      background: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      border-radius: 50%;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+      color: var(--navy);
+    }
+ 
+    .proj-btn:hover {
+      background: var(--navy);
+      color: var(--gold);
+      border-color: var(--navy);
+    }
+ 
+    /* ======== EMERGENCY ======== */
+    #emergency {
+      background: var(--red);
+      padding: 4rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+ 
+    #emergency::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 50%;
+      animation: emergencyPulse 4s ease infinite;
+    }
 /* ======== EMERGENCY ======== */
 #emergency { background: var(--red); padding: 4rem 6rem; position: relative; overflow: hidden; }
 
@@ -1971,7 +2203,7 @@ footer {
     <!-- Leader 1 -->
     <div class="leader-card reveal">
       <div class="leader-portrait leader-portrait-1">
-        <img src="assets/Claudia-Sheinbaum.webp" alt="Amara Kessler" class="leader-img">
+        <img src="assets/OIP.webp" alt="Amara Kessler" class="leader-img">
         <div class="leader-overlay">
           <p class="leader-quote">"A nation's strength lies in its people's trust."</p>
         </div>
@@ -1985,7 +2217,7 @@ footer {
     <!-- Leader 2 -->
     <div class="leader-card reveal reveal-delay-1">
       <div class="leader-portrait leader-portrait-2">
-        <img src="assets/PTI09_10_2022_000168A.webp" alt="Thomas Reinholt" class="leader-img">
+        <img src="assets/narendra-modi50-1698294323 (1).webp" alt="Narendra Modi" class="leader-img">
         <div class="leader-overlay">
           <p class="leader-quote">"Inclusive growth for every district, every family."</p>
         </div>
@@ -2108,7 +2340,7 @@ footer {
 
   <div class="media-card featured">
     <div class="media-thumb media-t1">
-      <img src="assets/Claudia-Sheinbaum.webp" alt="Press Conference">
+      <img src="assets/OIP.webp" alt="Press Conference">
       <div class="media-play">▶</div>
     </div>
     <div class="media-body">
@@ -2132,7 +2364,7 @@ footer {
 
   <div class="media-card">
     <div class="media-thumb media-t3">
-      <img src="assets/PTI09_10_2022_000168A.webp" alt="Data Release">
+      <img src="assets/narendra-modi50-1698294323 (1).webp" alt="Data Release">
       <div class="media-play">▶</div>
     </div>
     <div class="media-body">
